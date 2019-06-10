@@ -1,0 +1,11 @@
+name: LandClaims
+version: 1.0
+author: Mas281
+
+main: me.itsmas.landclaims.Claims
+
+depend: [Vault, PlaceholderAPI, HolographicDisplays, WorldEdit, WorldGuard]
+
+commands:
+  landclaims:
+    aliases: [claims, lclaims]

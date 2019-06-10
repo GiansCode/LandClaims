@@ -1,0 +1,265 @@
+# Try not to touch the claims.json file
+
+# Permissions
+# landclaims.command
+# landclaims.command.give
+# landclaims.command.giveall
+# landclaims.command.tiers
+# landclaims.command.reload
+# landclaims.bypass - can open all claim GUIs
+
+# Placeholders:
+# landclaims_claims - Amount of claims player has
+# landclaims_max_claims - Max amount of claims for player
+
+# Toggling region outline can cause client lag
+# on large regions (such as sky-to-bedrock enabled)
+region_settings:
+  outline:
+    # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+    particle: BARRIER
+
+permissions_settings:
+  # If not enabled, all players can have "infinite" claims
+  enabled: true
+
+  # You can name these whatever and give them to your ranks
+  # Controls the max amount of claims a player can have
+  # They are checked in descending order, so you don't need
+  # to worry about inheritance messing things up
+  # (underscores in the permissions are replaced with .s, but that tends to mess up YAML)
+  # If a player has none of these permissions, they'll get 0 claims by default
+  permissions:
+    landclaims_default: 1
+    landclaims_vip: 3
+    landclaims_admin: 99
+
+misc:
+  carry_old_members: true
+
+  toggle_items:
+    enabled:
+      material: INK_SACK
+      data: 10
+      name: "&a&lEnabled"
+
+    disabled:
+      material: INK_SACK
+      data: 8
+      name: "&c&lDisabled"
+
+actionbar:
+  enabled: true
+
+economy:
+  enabled: false
+  cost: 100
+
+menu_back_button:
+  material: SIGN
+  data: 0
+  name: "&c« Back"
+
+menus:
+  main:
+    title: "&4Claim Management"
+    size: 6
+
+    buttons:
+      outline:
+        slot: 11
+        stack:
+          material: GLOWSTONE
+          data: 0
+          name: "&eToggle Region Outline"
+
+      flags:
+        slot: 12
+        stack:
+          material: SIGN
+          data: 0
+          name: "&bChange Region Flags"
+
+      members:
+        slot: 13
+        stack:
+          material: PAPER
+          data: 0
+          name: "&aManage Members"
+
+      delete:
+        slot: 14
+        stack:
+          material: REDSTONE_BLOCK
+          data: 0
+          name: "&4&lDelete Region"
+
+      transfer_ownership:
+        slot: 15
+        stack:
+          material: BEDROCK
+          data: 0
+          name: "&4&lTransfer Ownership"
+
+  members:
+    title: "&2Manage Members"
+    size: 3
+
+    buttons:
+      add:
+        slot: 11
+        stack:
+          material: EMERALD_BLOCK
+          data: 0
+          name: "&aAdd a Member"
+
+      list:
+        slot: 13
+        stack:
+          material: DIRT
+          data: 0
+          name: "&eList Members"
+
+      remove:
+        slot: 15
+        stack:
+          material: REDSTONE_BLOCK
+          data: 0
+          name: "&cRemove a Member"
+
+  member_list:
+    title: "&eAdded Members"
+    size: 0
+
+    buttons:
+
+  confirm:
+    title: "&4Confirm Action: {0}"
+    size: 3
+
+    buttons:
+      confirm:
+        slot: 11
+        stack:
+          material: EMERALD_BLOCK
+          data: 0
+          name: "&a&lConfirm"
+
+      cancel:
+        slot: 15
+        stack:
+          material: REDSTONE_BLOCK
+          data: 0
+          name: "&c&lCancel"
+
+  flags:
+    title: "&2Manage Region Flags"
+    size: 4
+
+    buttons:
+      pvp:
+        slot: 11
+        stack:
+          material: DIAMOND_SWORD
+          data: 0
+          name: "&aToggle PVP"
+
+      build:
+        slot: 12
+        stack:
+          material: STONE
+          data: 0
+          name: "&aToggle Building"
+
+      messages:
+        slot: 13
+        stack:
+          material: SIGN
+          data: 0
+          name: "&aToggle greeting/farewell messages"
+
+      containers:
+        slot: 14
+        stack:
+          material: CHEST
+          data: 0
+          name: "&aToggle container access"
+
+      use:
+        slot: 15
+        stack:
+          material: DIAMOND_PICKAXE
+          data: 0
+          name: "&aToggle item use"
+
+# Messages
+messages:
+  command_usage_header: "&aAvailable Commands:"
+
+  command_give_usage: "&eUsage: /landclaims give <player> <tier> <amount>"
+  command_give_success: "&aYou gave {0} of tier {1} item to {2}" # amount, tier, receiver
+
+  command_giveall_usage: "&eUsage: /landclaims giveall <tier> <amount>"
+  command_giveall_success: "&aYou gave {0} of tier {1} item to all players" # amount, tier
+
+  command_give_generic_received: "&aYou received {0} of tier {1} claim item from {2}" # amount, tier, sender
+
+  command_tiers_usage: "&eUsage: /landclaims tiers"
+  command_tiers_header: "&aAvailable Tiers:"
+  command_tiers_success: "&aTier {0}" # tier
+
+  command_reload_usage: "&eUsage: /landclaims reload"
+  command_reload_success: "&aPlugin reloaded"
+
+  no_drop_tier: "&cYou cannot drop this item"
+
+  max_claims_exceeded: "&cYou have reached your maximum number of claims"
+  inside_existing: "&cYou cannot create a claim in an already existing region"
+  claim_overlap: "&cYour claim cannot overlap with other regions"
+  insufficient_funds: "You need {0} to create a claim , you only have {1}"
+
+  claim_created: "&a&lYou created a tier {0} claim!"
+
+  no_menu_permission: "&cYou cannot open this claim menu"
+
+  cannot_break_centre: "&cYou cannot break the region centre! Delete it via the menu"
+
+  claim_deleted: "&a&lYou deleted the claim"
+
+  outline_enabled: "&aYou enabled the region outline"
+  outline_disabled: "&cYou disabled the region outline"
+
+  member_added: "&aAdded {0} as a member"
+  member_already_added: "&cThat member is already added"
+  add_no_self: "&cYou cannot add yourself"
+
+  no_added_members: "&cThis claim doesn't have any members"
+
+  member_removed: "&aRemoved {0} from being a member"
+  member_not_a_member: "&cThat player is not a member"
+  remove_no_self: "&cYou cannot remove yourself"
+
+  ownership_changed: "&cYou transferred ownership to {0}"
+  owner_not_joined: "&cYou cannot transfer ownernship to a player who has never joined"
+  already_owns: "&cYou already own the claim"
+
+  flag_pvp_enabled: "&aPVP is now enabled"
+  flag_pvp_disabled: "&cPVP is now disabled"
+
+  flag_build_enabled: "&aYou enabled building"
+  flag_build_disabled: "&cYou disabled building"
+
+  flag_messages_enabled: "&aGreeting/farewell messages are now enabled"
+  flag_messages_disabled: "&cGreeting/farewell messages are now disabled"
+
+  flag_containers_enabled: "&aContainers are now enabled"
+  flag_containers_disabled: "&cContainers are now disabled"
+
+  flag_use_enabled: "&aItem use is now enabled"
+  flag_use_disabled: "&cItem use is now disabled"
+
+  item_dropped: "&cYour inventory was full, so the item was dropped at your feet"
+  invalid_tier: "&cThat is not a valid tier"
+  no_permission: "&cYou don't have permission"
+  player_offline: "&cThat player is not online"
+  invalid_integer: "&cThat is not a valid integer"

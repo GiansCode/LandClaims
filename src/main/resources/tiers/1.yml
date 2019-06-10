@@ -1,0 +1,29 @@
+stack:
+  material: SPONGE
+  data: 0
+  name: "&eClaim Item [Tier 1]"
+  lore:
+  - ""
+  - "&cPlace me to create a 5x5 claim"
+  enchantments:
+  - "DAMAGE_ALL;5"
+  flags:
+  - "HIDE_ENCHANTS"
+
+settings:
+  radius: 5
+  sky_to_bedrock: true
+  droppable: false
+
+flags:
+  pvp: false
+  build: false
+  use: false
+  greeting: "&aYou are entering {0}''s claim"
+  farewell: "&cYou are leaving {0}''s claim"
+
+hologram:
+- "{0}''s Claim"
+- "Click me"
+- "Testing third line"
+- "Testing fourth line"
